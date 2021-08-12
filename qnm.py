@@ -65,6 +65,7 @@ def annotate_factory(real_eq, imag_eq):
         efficiency = imag_eq(real, D)
         return real, efficiency
     return inner_func
+
 @st.cache
 def make_modes(folder):
     modes = defaultdict(dict)
@@ -105,19 +106,15 @@ def plot_modes(modes, geometry, resolution=300, coords={}, label=False, xs=[]):
         
         fig.add_trace(go.Scatter(x=xs, y=y, name=_label, showlegend=(not (_label in labels)),mode='lines', line=dict(color=colors[name],)), **coords)
         labels.add(_label)
-    _label = 'sum'
     
     fig.add_trace(go.Scatter(x=xs, y=(ys**2/ys.sum(axis=0)).sum(axis=0),
-                name=_label ,showlegend=label, line=dict(color='white', dash='dash',)), **coords)
-    labels.add('sum')
+                name='sum' ,showlegend=label, line=dict(color='white', dash='dash',)), **coords)
     fig.update_layout(#title='',
                 #    xaxis_title='',
                 #    yaxis_title=adjectives[geometry]+' facet', 
                    height=600, width=1100)
     
-    
-   
-    # return fig 
+'''__Qausi-Normal modes of Nanoparticle on mirror__'''
 plot_container = st.container()
 for col, param, args in zip(st.columns(4), 'fDtn', (('Facet', 0.1, 0.4, 0.3),
                     ('Diameter (nm)', 40., 100., 80.,),
@@ -127,18 +124,17 @@ for col, param, args in zip(st.columns(4), 'fDtn', (('Facet', 0.1, 0.4, 0.3),
         vars()[param] = st.slider(*args)
 
 adjectives = {'circle': 'circular', 'square': 'square', 'triangle': 'triangular'}
-
-
 modes = [m+ ' mode' for m in '10 11 20 21 22 2-2'.split()]  
 colors = {m: c for m, c in zip(modes, px.colors.qualitative.Plotly )}
+
 @st.cache 
 def folders():
     root = Path('geometries')
     return [f for f in root.iterdir() if f.is_dir()]
 folders = folders()
+
 with plot_container:
-    fig = make_subplots(rows=len(folders), cols=1, #specs=[[{},] [{},] [{},]],
-                        # subplot_titles=tuple(f.name for f in folders),
+    fig = make_subplots(rows=len(folders), cols=1, 
                         shared_xaxes=True,
                         x_title='wavelength (nm)',
                         y_title='',)
@@ -153,7 +149,7 @@ with plot_container:
         fig['layout'][f'yaxis{x}']['title'] = adjectives[folder.name]+' facet' 
 
 
-    '''__Qausi-Normal modes of Nanoparticle on mirror__'''
+ 
     st.plotly_chart(fig, use_column_width=True)
 '''
 __Description of parameters__
