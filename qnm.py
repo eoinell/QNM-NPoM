@@ -154,7 +154,7 @@ with plot_container:
 '''
 __Description of parameters__
 
-_Sphere_
+__Circle__
 
 f: facet fraction.
 
@@ -174,7 +174,7 @@ n: gap refractive index.
         Range: 1.25-2
 ---------------------------------------------------------------------------
 
-_Square_
+__Square__
 
 _f_: facet fraction.
 
@@ -193,7 +193,7 @@ defined by parameter D have the same cross-sectional area.
 D = $a/\sqrt(\pi/(12\sqrt3))$
     Range: 40-100nm
 
-_Triangle_
+__Triangle__
 
 _f_: facet fraction.
 
