@@ -1,14 +1,14 @@
 [tool.poetry]
 name = "qnm-npom"
-version = "1.0"
+version = "0.1.0"
 description = ""
 authors = ["Eoin Elliott"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
-numpy = "^1.21.2"
-plotly = "^5.2.1"
-streamlit = "^0.86.0"
+python = "*"
+plotly = "*"
+streamlit = "*"
+numpy = "*"
 
 [tool.poetry.dev-dependencies]
 
