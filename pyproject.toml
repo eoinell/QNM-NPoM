@@ -1,14 +1,14 @@
 [tool.poetry]
 name = "qnm-npom"
 version = "1.0"
-description = "visualization tool for the quasi-normal modes of nanoparticle on mirror"
+description = ""
 authors = ["Eoin Elliott"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
-streamlit = "^0.86.0"
-plotly = "^5.2.1"
+python = "^3.9"
 numpy = "^1.21.2"
+plotly = "^5.2.1"
+streamlit = "^0.86.0"
 
 [tool.poetry.dev-dependencies]
 
