@@ -13,7 +13,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import numpy as np
+
 st.set_page_config(layout="wide")
+
 pi = 3.14159265
 def ev_to_wl(eV):
     return 1239.8419300923943/eV
