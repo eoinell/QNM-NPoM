@@ -137,7 +137,7 @@ def plot_modes(modes, geometry, resolution=300, coords={}, label=False, xs=[]):
 
     fig.add_trace(
         go.Scatter(x=xs,
-                   y=(ys**2).sum(axis=0)/ys.sum(axis=0),
+                   y=(ys**2).sum(axis=0) / ys.sum(axis=0),
                    name='sum',
                    showlegend=label,
                    line=dict(
@@ -157,29 +157,19 @@ slider_container = st.container()
 
 extended_range = st.checkbox('allow parameters outside simulated range')
 if extended_range:
-    slider_args = (('Facet', 0.0, 0.45, 0.3), (
-        'Diameter (nm)',
-        20.,
-        150.,
-        80.,
-    ), ('gap thickness (nm)', 0.5, 12., 1.), (
-        'gap refractive index',
-        0.75,
-        2.5,
-        1.5,
-    ))
+    slider_args = (
+        ('Facet', 0.0, 0.45, 0.3),
+        ('Diameter (nm)', 20., 150., 80.),
+        ('gap thickness (nm)', 0.5, 12., 1.),
+        ('gap refractive index', 0.75, 2.5, 1.5),
+    )
 else:
-    slider_args = (('Facet', 0.1, 0.4, 0.3), (
-        'Diameter (nm)',
-        40.,
-        100.,
-        80.,
-    ), ('gap thickness (nm)', 0.75, 6., 1.), (
-        'gap refractive index',
-        1.,
-        2.,
-        1.5,
-    ))
+    slider_args = (
+        ('Facet', 0.1, 0.4, 0.3),
+        ('Diameter (nm)', 40., 100., 80.),
+        ('gap thickness (nm)', 0.75, 6., 1.),
+        ('gap refractive index', 1., 2., 1.5),
+    )
 
 with slider_container:
     for col, param, args in zip(st.columns(4), 'fDtn', slider_args):
@@ -215,7 +205,7 @@ with plot_container:
         geometries[folder.stem], xlim_func = make_modes(folder)
         x_lims.update(xlim_func())
     xs = np.linspace(min(x_lims), max(x_lims), 300)
-    for i, (name, modes) in enumerate(geometries.items()): 
+    for i, (name, modes) in enumerate(geometries.items()):
         plot_modes(modes,
                    name,
                    coords=dict(row=i + 1, col=1),
