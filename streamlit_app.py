@@ -137,7 +137,7 @@ def plot_modes(modes, geometry, resolution=300, coords={}, label=False, xs=[]):
 
     fig.add_trace(
         go.Scatter(x=xs,
-                   y=(ys**2 / ys.sum(axis=0)).sum(axis=0),
+                   y=(ys**2).sum(axis=0)/ys.sum(axis=0),
                    name='sum',
                    showlegend=label,
                    line=dict(
@@ -157,28 +157,34 @@ slider_container = st.container()
 
 extended_range = st.checkbox('allow parameters outside simulated range')
 if extended_range:
-    slider_args = (
-                    ('Facet', 0.0, 0.45, 0.3),
-                    ('Diameter (nm)', 20., 150., 80.,), 
-                    ('gap thickness (nm)', 0.5, 12., 1.), 
-                    ('gap refractive index', 0.75, 2.5, 1.5,)
-                    )
+    slider_args = (('Facet', 0.0, 0.45, 0.3), (
+        'Diameter (nm)',
+        20.,
+        150.,
+        80.,
+    ), ('gap thickness (nm)', 0.5, 12., 1.), (
+        'gap refractive index',
+        0.75,
+        2.5,
+        1.5,
+    ))
 else:
-    slider_args = (
-                    ('Facet', 0.1, 0.4, 0.3),
-                    ('Diameter (nm)', 40., 100., 80.,), 
-                    ('gap thickness (nm)', 0.75, 6., 1.), 
-                    ('gap refractive index', 1., 2., 1.5,)
-                    )
+    slider_args = (('Facet', 0.1, 0.4, 0.3), (
+        'Diameter (nm)',
+        40.,
+        100.,
+        80.,
+    ), ('gap thickness (nm)', 0.75, 6., 1.), (
+        'gap refractive index',
+        1.,
+        2.,
+        1.5,
+    ))
 
 with slider_container:
-    for col, param, args in zip(st.columns(4),
-                                'fDtn',
-                                slider_args):
+    for col, param, args in zip(st.columns(4), 'fDtn', slider_args):
         with col:
             vars()[param] = st.slider(*args)
-
-
 
 adjectives = {
     'circle': 'circular',
@@ -188,14 +194,11 @@ adjectives = {
 modes = [m + ' mode' for m in '10 11 20 21 22 2-2'.split()]
 colors = {m: c for m, c in zip(modes, px.colors.qualitative.Plotly)}
 
-
-@st.cache
-def folders():
-    root = Path('geometries')
-    return [f for f in root.iterdir() if f.is_dir()]
-
-
-folders = folders()
+folders = [Path('geometries') / g for g in (
+    'circle',
+    'triangle',
+    'square',
+)]
 
 with plot_container:
     fig = make_subplots(
@@ -206,11 +209,15 @@ with plot_container:
         y_title='',
     )
     xs = None
-    for i, folder in enumerate(folders):
-        modes, xlim_func = make_modes(folder)
-        if xs is None: xs = np.linspace(*xlim_func(), 300)
+    geometries = {}
+    x_lims = set()
+    for folder in folders:
+        geometries[folder.stem], xlim_func = make_modes(folder)
+        x_lims.update(xlim_func())
+    xs = np.linspace(min(x_lims), max(x_lims), 300)
+    for i, (name, modes) in enumerate(geometries.items()): 
         plot_modes(modes,
-                   folder.stem,
+                   name,
                    coords=dict(row=i + 1, col=1),
                    label=(folder.stem == 'triangle'),
                    xs=xs)  # x axis changes))
