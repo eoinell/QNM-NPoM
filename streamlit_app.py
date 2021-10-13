@@ -165,7 +165,7 @@ if extended_range:
     )
 else:
     slider_args = (
-        ('Facet', 0.1, 0.4, 0.3),
+        ('Facet', 0.15, 0.6, 0.3),
         ('Diameter (nm)', 40., 100., 80.),
         ('gap thickness (nm)', 0.75, 6., 1.),
         ('gap refractive index', 1., 2., 1.5),
