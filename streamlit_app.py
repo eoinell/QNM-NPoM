@@ -225,7 +225,7 @@ __Circle__
 f: facet fraction.
 
 The ratio of facet diameter to spherical nanoparticle diameter.
-        Range: 0.1-0.4
+        Range: 0.15-0.6
 ---------------------------------------------------------------------------
 D (nm): Sphere's Diameter.
 
@@ -250,14 +250,14 @@ $f = fs/(2\sqrt3 a)$,
 where a is Rhombicuboctohedral side length, and fs is the facet side length.
 This definition was chosen to preserve the ratio of areas on the facet to the middle 
 cross-section of the nanoparticle in the spherical and rhombicuboctohedral cases.
-for a regular rhombicuboctohedron, use $1/(2\sqrt3) \simeq 0.29$
-    Range: 0.1 - 0.4
+for a regular rhombicuboctohedron, use $\frac{\sqrt[4]{3}}/{2\sqrt{2(1+\sqrt{2})}} \simeq 0.3$
+    Range: 0.15 - 0.6
 ---------------------------------------------------------------------------
 _D_ (nm): roughly equivalent to Diameter.
 
 A sphere of diameter D and Rhombicuboctohedron
 defined by parameter D have the same cross-sectional area.
-D = $a/\sqrt(\pi/(12\sqrt3))$
+D = $a\sqrt{\pi/8(1+sqrt(2)))}$
     Range: 40-100nm
 ---------------------------------------------------------------------------
 
@@ -270,14 +270,14 @@ f = $fs/(a(\sqrt2 + 2))$,
 where a is Rhombicuboctohedral side length, and fs is the facet side length.
 This definition was chosen to preserve the ratio of areas on the facet to the middle 
 cross-section of the nanoparticle in the spherical and rhombicuboctohedral cases.
-for a regular rhombicuboctohedron, use $1/(\sqrt(2) + 2) \simeq 0.29$
-        Range: 0.1 - 0.4
+for a regular rhombicuboctohedron, use $1/2(1+\sqrt{2}) \simeq 0.46$
+        Range: 0.15 - 0.6
 ---------------------------------------------------------------------------
 _D_ (nm): roughly equivalent to Diameter.
 
 A sphere of diameter D and Rhombicuboctohedron
 defined by parameter D have the same cross-sectional area.
-D = $a/\sqrt(\pi/(12\sqrt3))$
+D = $a\sqrt{\pi/8(1+sqrt(2)))}$
     Range: 40-100nm
 
 ----------------------
