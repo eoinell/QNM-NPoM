@@ -217,7 +217,7 @@ with plot_container:
         fig['layout'][f'yaxis{x}']['title'] = adjectives[geometry] + ' facet'
 
     st.plotly_chart(fig, use_column_width=True)
-'''
+r'''
 __Description of parameters__
 
 __Circle__
@@ -250,7 +250,7 @@ $f = fs/(2\sqrt3 a)$,
 where a is Rhombicuboctohedral side length, and fs is the facet side length.
 This definition was chosen to preserve the ratio of areas on the facet to the middle 
 cross-section of the nanoparticle in the spherical and rhombicuboctohedral cases.
-for a regular rhombicuboctohedron, use $\frac{\sqrt[4]{3}}/{2\sqrt{2(1+\sqrt{2})}} \simeq 0.3$
+for a regular rhombicuboctohedron, use $\frac{\sqrt[4]{3}}{2\sqrt{2(1+\sqrt{2})}} \simeq 0.3$
     Range: 0.15 - 0.6
 ---------------------------------------------------------------------------
 _D_ (nm): roughly equivalent to Diameter.
