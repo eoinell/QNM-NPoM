@@ -181,7 +181,7 @@ adjectives = {
     'square': 'square',
     'triangle': 'triangular'
 }
-modes = [m + ' mode' for m in '10 11 20 21 22 2-2'.split()]
+modes = [m + ' mode' for m in '10 11 20 21 22 2-2 33'.split()]
 colors = {m: c for m, c in zip(modes, px.colors.qualitative.Plotly)}
 
 folders = [Path('geometries') / g for g in (
