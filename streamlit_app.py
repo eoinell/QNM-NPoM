@@ -158,7 +158,7 @@ slider_container = st.container()
 extended_range = st.checkbox('allow parameters outside simulated range')
 if extended_range:
     slider_args = (
-        ('Facet', 0.0, 0.45, 0.3),
+        ('Facet', 0.0, 0.7, 0.3),
         ('Diameter (nm)', 20., 150., 80.),
         ('gap thickness (nm)', 0.5, 12., 1.),
         ('gap refractive index', 0.75, 2.5, 1.5),
@@ -257,8 +257,9 @@ _D_ (nm): roughly equivalent to Diameter.
 
 A sphere of diameter D and Rhombicuboctohedron
 defined by parameter D have the same cross-sectional area.
-D = $a\sqrt{\pi/8(1+sqrt(2)))}$
-    Range: 40-100nm
+D = $a\sqrt{8(1+\sqrt{2})/\pi}$
+    
+        Range: 40-100nm
 ---------------------------------------------------------------------------
 
 __Square__
@@ -277,8 +278,9 @@ _D_ (nm): roughly equivalent to Diameter.
 
 A sphere of diameter D and Rhombicuboctohedron
 defined by parameter D have the same cross-sectional area.
-D = $a\sqrt{\pi/8(1+sqrt(2)))}$
-    Range: 40-100nm
+D = $a\sqrt{8(1+\sqrt{2})/\pi}$
+    
+        Range: 40-100nm
 
 ----------------------
 All geometries have 5nm radius rounding applied to the bottom facet edge.
