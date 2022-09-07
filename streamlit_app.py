@@ -151,7 +151,9 @@ def plot_modes(modes, geometry, resolution=300, coords={}, label=False, xs=[]):
         width=1100)
 
 
-'''__Qausi-Normal modes of Nanoparticle on mirror__'''
+'''__Quasi-Normal modes of Nanoparticle on mirror__'''
+
+'''This page is deprecated - please use the published version at https://nanophotonics-npom-qnms-streamlit-app-n21vw2.streamlitapp.com/'''
 plot_container = st.container()
 slider_container = st.container()
 
