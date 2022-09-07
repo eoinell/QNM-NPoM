@@ -85,7 +85,7 @@ def annotate_factory(real_eq, imag_eq):
     return inner_func
 
 
-@st.cache
+# @st.cache
 def make_modes(folder):
     modes = defaultdict(dict)
 
